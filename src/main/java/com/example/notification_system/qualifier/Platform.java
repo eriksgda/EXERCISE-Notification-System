@@ -1,4 +1,5 @@
 package com.example.notification_system.qualifier;
 
-public class Plataform {
+public enum Platform {
+    ANDROID, IOS;
 }
