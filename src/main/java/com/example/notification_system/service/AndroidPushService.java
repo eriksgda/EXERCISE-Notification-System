@@ -8,6 +8,8 @@ import com.example.notification_system.repository.NotificationLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @PushQualifier(platform = Platform.ANDROID)
 public class AndroidPushService implements NotificationService{
@@ -26,7 +28,8 @@ public class AndroidPushService implements NotificationService{
         this.repository.save(NotificationLog.builder()
                 .message(message)
                 .notificationType(NotificationTypes.PUSH)
-                .platform(Platform.ANDROID).build());
+                .platform(Platform.ANDROID)
+                .timestamp(LocalDateTime.now()).build());
 
         return response;
     }

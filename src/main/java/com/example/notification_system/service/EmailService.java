@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Primary
 @Service
 public class EmailService implements NotificationService{
@@ -25,7 +27,8 @@ public class EmailService implements NotificationService{
         this.repository.save(NotificationLog.builder()
                 .message(message)
                 .notificationType(NotificationTypes.EMAIL)
-                .platform(null).build());
+                .platform(null)
+                .timestamp(LocalDateTime.now()).build());
 
         return response;
     }

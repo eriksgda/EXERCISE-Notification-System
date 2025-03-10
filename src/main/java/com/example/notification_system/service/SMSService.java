@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @Qualifier("sms")
 public class SMSService implements NotificationService{
@@ -25,7 +27,8 @@ public class SMSService implements NotificationService{
         this.repository.save(NotificationLog.builder()
                 .message(message)
                 .notificationType(NotificationTypes.SMS)
-                .platform(null).build());
+                .platform(null)
+                .timestamp(LocalDateTime.now()).build());
 
         return response;
     }
